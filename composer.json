@@ -1,0 +1,25 @@
+{
+    "name": "positus/positus-api-php-client",
+    "description": "Client library for Positus APIs",
+    "keywords": [
+        "positus",
+        "positus-api-php-client"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Caio Kawasaki",
+            "email": "caiokawasaki@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Src\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
