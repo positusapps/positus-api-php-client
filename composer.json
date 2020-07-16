@@ -17,7 +17,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Src\\": "src/"
+            "Positus\\Client\\": "src/"
         }
     },
     "minimum-stability": "dev",
