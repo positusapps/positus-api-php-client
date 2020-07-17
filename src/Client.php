@@ -2,7 +2,6 @@
 
 namespace Positus;
 
-use GuzzleHttp\Client as Guzzle;
 use Positus\Api\Number;
 
 class Client
