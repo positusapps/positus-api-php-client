@@ -13,12 +13,12 @@ class Response
 
     public function success()
     {
-        // Check if sucess
+        return $this->response->getStatusCode() >= 200 && $this->response->getStatusCode() < 300;
     }
 
     public function error()
     {
-        // Check if error
+        return $this->response->getStatusCode() >= 400;
     }
 
     public function body()
