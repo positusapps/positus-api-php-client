@@ -173,6 +173,12 @@ if ($response->error()) {
 }
 ````
 
+If you only need the status code:
+
+````php
+$response->status();
+````
+
 You can get the answer from api as a string:
 
 ````php
@@ -183,4 +189,22 @@ Or if you prefer as JSON:
 
 ````php
 $response->json();
+````
+
+Or if you prefer as object:
+
+````php
+$response->object();
+````
+
+You can get a header:
+
+````php
+$response->header('Content-Type');
+````
+
+Or you can get all headers:
+
+````php
+$response->headers();
 ````

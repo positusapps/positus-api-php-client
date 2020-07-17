@@ -28,6 +28,26 @@ class Response
 
     public function json()
     {
-        return json_decode($this->response->getBody());
+        return json_decode($this->response->getBody(), true);
+    }
+
+    public function object()
+    {
+        return json_decode($this->response->getBody(), false);
+    }
+
+    public function header($header)
+    {
+        return $this->response->getHeaderLine($header);
+    }
+
+    public function headers()
+    {
+        return $this->response->getHeaders();
+    }
+
+    public function status()
+    {
+        return $this->response->getStatusCode();
     }
 }
