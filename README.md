@@ -127,6 +127,38 @@ if ($response->success()) {
 }
 ````
 
+If everything goes correctly you will receive an answer like this:
+
+````json
+{
+    "messages": [
+        {
+            "id": "gBEGVUOWQWWQAgnFOaNl67sTDIE"
+        }
+    ],
+    "message": "The message was successfully sent"
+}
+````
+
+If something goes wrong, you will receive a message detailing the errors:
+
+````json
+{
+    "errors": [
+        {
+            "code": 1008,
+            "title": "Required parameter is missing",
+            "details": "Parameter 'body' is mandatory for type 'text'"
+        }
+    ],
+    "message": "Unfortunately we were not able to send your message"
+}
+````
+
+Please check all possible errors that the api may return in the [WhatsApp Business documentation](https://developers.facebook.com/docs/whatsapp/api/errors).
+
+Feel free to create a [pull request](https://github.com/positusapps/positus-api-php-client) or open a [support ticket](https://studio.posit.us/suporte) in Positus Studio if you have or find any problems.
+
 You can check if it failed:
 
 ````php
