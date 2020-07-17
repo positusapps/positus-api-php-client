@@ -28,7 +28,7 @@ class Number
 
     public function sendData($data)
     {
-        return $this->sendRequest('POST', sprintf('whatsapp/numbers/%d/messages', $this->numberId), $data);
+        return $this->sendRequest('POST', sprintf('whatsapp/numbers/%s/messages', $this->numberId), $data);
     }
 
     public function sendText($to, $body)
@@ -41,12 +41,12 @@ class Number
             ]
         ];
 
-        return $this->sendRequest('POST', sprintf('whatsapp/numbers/%d/messages', $this->numberId), $data);
+        return $this->sendRequest('POST', sprintf('whatsapp/numbers/%s/messages', $this->numberId), $data);
     }
 
     public function sendTemplate($data)
     {
-        return $this->sendRequest('POST', sprintf('whatsapp/numbers/%d/messages', $this->numberId), $data);
+        return $this->sendRequest('POST', sprintf('whatsapp/numbers/%s/messages', $this->numberId), $data);
     }
 
     public function sendHsm($to, $namespace, $elementName, $code, $localizableParams)
@@ -68,7 +68,7 @@ class Number
             ]
         ];
 
-        return $this->sendRequest('POST', sprintf('whatsapp/numbers/%d/messages', $this->numberId), $data);
+        return $this->sendRequest('POST', sprintf('whatsapp/numbers/%s/messages', $this->numberId), $data);
     }
 
     public function sendContacts($to, $contacts)
@@ -79,7 +79,7 @@ class Number
             'contacts' => $contacts
         ];
 
-        return $this->sendRequest('POST', sprintf('whatsapp/numbers/%d/messages', $this->numberId), $data);
+        return $this->sendRequest('POST', sprintf('whatsapp/numbers/%s/messages', $this->numberId), $data);
     }
 
     public function sendLocation($to, $longitude, $latitude, $name, $address)
@@ -95,7 +95,7 @@ class Number
             ]
         ];
 
-        return $this->sendRequest('POST', sprintf('whatsapp/numbers/%d/messages', $this->numberId), $data);
+        return $this->sendRequest('POST', sprintf('whatsapp/numbers/%s/messages', $this->numberId), $data);
     }
 
     public function sendImage($to, $link, $caption = null)
@@ -109,7 +109,7 @@ class Number
             ]
         ];
 
-        return $this->sendRequest('POST', sprintf('whatsapp/numbers/%d/messages', $this->numberId), $data);
+        return $this->sendRequest('POST', sprintf('whatsapp/numbers/%s/messages', $this->numberId), $data);
     }
 
     public function sendDocument($to, $link, $caption = null)
@@ -123,7 +123,7 @@ class Number
             ]
         ];
 
-        return $this->sendRequest('POST', sprintf('whatsapp/numbers/%d/messages', $this->numberId), $data);
+        return $this->sendRequest('POST', sprintf('whatsapp/numbers/%s/messages', $this->numberId), $data);
     }
 
     public function sendVideo($to, $link, $caption = null)
@@ -137,7 +137,7 @@ class Number
             ]
         ];
 
-        return $this->sendRequest('POST', sprintf('whatsapp/numbers/%d/messages', $this->numberId), $data);
+        return $this->sendRequest('POST', sprintf('whatsapp/numbers/%s/messages', $this->numberId), $data);
     }
 
     public function sendAudio($to, $link)
@@ -150,11 +150,11 @@ class Number
             ]
         ];
 
-        return $this->sendRequest('POST', sprintf('whatsapp/numbers/%d/messages', $this->numberId), $data);
+        return $this->sendRequest('POST', sprintf('whatsapp/numbers/%s/messages', $this->numberId), $data);
     }
 
     public function getMedia($mediaId)
     {
-        return $this->sendRequest('GET', sprintf('whatsapp/numbers/%d/media/%s', $this->numberId, $mediaId));
+        return $this->sendRequest('GET', sprintf('whatsapp/numbers/%s/media/%s', $this->numberId, $mediaId));
     }
 }
