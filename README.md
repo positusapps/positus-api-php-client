@@ -131,9 +131,17 @@ $response = $number->sendVideo('+5511999999999', 'https://example.com/video.mp4'
 $response = $number->sendAudio('+5511999999999', 'https://example.com/audio.mp3');
 ````
 
-## Messages Responses
+## Receiving media
 
-After sending a message, you can check if the message was sent successfully:
+To download a media, use the following method:
+
+````php
+$response = $number->getMedia('media-id');
+````
+
+## Responses
+
+After any call you can check if everything went well and receive the data using the following methods:
 
 ````php
 if ($response->success()) {
