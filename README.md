@@ -70,10 +70,18 @@ $response = $number->sendText('+5511999999999', 'Your message');
 ### HSM
 
 ````php
-$response = $number->sendHsm('+5511999999999', 'name-space', 'element-name', 'country-code', ['parameter-a', ...]);
+$response = $number->sendHsm('+5511999999999', 'namespace', 'element-name', 'country-code', ['parameter-a', ...]);
 ````
 
 Please check the documentation related to hsm in the [WhatsApp Business documentation](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates).
+
+### Template
+
+````php
+$response = $number->sendTemplate('+5511999999999', 'namespace', 'name', 'country-code', [...]);
+````
+
+Please check the documentation related to hsm in the [WhatsApp Business documentation](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates/media-message-templates).
 
 ### Contacts
 

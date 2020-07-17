@@ -70,12 +70,25 @@ class Number
         return $this->sendRequest('POST', $this->resolveMessagePath(), $data);
     }
 
-    public function sendTemplate($data)
+    public function sendTemplate($to, $namespace, $name, $languageCode, $components = [])
     {
+        $data = [
+            'to' => $to,
+            'type' => 'template',
+            'template' => [
+                "namespace" => $namespace,
+                "name" => $name,
+                "language" => [
+                    "code" => $languageCode
+                ],
+                "components" => $components
+            ]
+        ];
+
         return $this->sendRequest('POST', $this->resolveMessagePath(), $data);
     }
 
-    public function sendHsm($to, $namespace, $elementName, $code, $localizableParams)
+    public function sendHsm($to, $namespace, $elementName, $languageCode, $localizableParams = [])
     {
         $data = [
             'to' => $to,
@@ -84,13 +97,13 @@ class Number
                 "namespace" => $namespace,
                 "element_name" => $elementName,
                 "language" => [
-                    "code" => $code,
-                    "localizable_params" => array_map(function ($param) {
-                        return [
-                            'default' => $param
-                        ];
-                    }, $localizableParams)
-                ]
+                    "code" => $languageCode
+                ],
+                "localizable_params" => array_map(function ($param) {
+                    return [
+                        'default' => $param
+                    ];
+                }, $localizableParams)
             ]
         ];
 
