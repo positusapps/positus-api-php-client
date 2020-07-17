@@ -1,6 +1,6 @@
 <?php
 
-namespace Positus;
+namespace Positus\Api;
 
 class Number
 {
