@@ -10,9 +10,13 @@ class Number
 
     private $numberId;
 
-    public function __construct($client)
+    private $sandbox;
+
+    public function __construct($client, $sandbox)
     {
         $this->client = $client;
+
+        $this->sandbox = $sandbox;
 
         $this->numberId = $client->getNumberId();
     }
@@ -26,9 +30,31 @@ class Number
         return new Response($response);
     }
 
+    public function resolveMessagePath()
+    {
+        $path = sprintf('whatsapp/numbers/%s/messages', $this->numberId);
+
+        if ($this->sandbox) {
+            return 'sandbox/' . $path;
+        }
+
+        return $path;
+    }
+
+    public function resolveMediaPath($mediaId)
+    {
+        $path = sprintf('whatsapp/numbers/%s/media/%s', $this->numberId, $mediaId);
+
+        if ($this->sandbox) {
+            return 'sandbox/' . $path;
+        }
+
+        return $path;
+    }
+
     public function sendData($data)
     {
-        return $this->sendRequest('POST', sprintf('whatsapp/numbers/%s/messages', $this->numberId), $data);
+        return $this->sendRequest('POST', $this->resolveMessagePath(), $data);
     }
 
     public function sendText($to, $body)
@@ -41,12 +67,12 @@ class Number
             ]
         ];
 
-        return $this->sendRequest('POST', sprintf('whatsapp/numbers/%s/messages', $this->numberId), $data);
+        return $this->sendRequest('POST', $this->resolveMessagePath(), $data);
     }
 
     public function sendTemplate($data)
     {
-        return $this->sendRequest('POST', sprintf('whatsapp/numbers/%s/messages', $this->numberId), $data);
+        return $this->sendRequest('POST', $this->resolveMessagePath(), $data);
     }
 
     public function sendHsm($to, $namespace, $elementName, $code, $localizableParams)
@@ -68,7 +94,7 @@ class Number
             ]
         ];
 
-        return $this->sendRequest('POST', sprintf('whatsapp/numbers/%s/messages', $this->numberId), $data);
+        return $this->sendRequest('POST', $this->resolveMessagePath(), $data);
     }
 
     public function sendContacts($to, $contacts)
@@ -79,7 +105,7 @@ class Number
             'contacts' => $contacts
         ];
 
-        return $this->sendRequest('POST', sprintf('whatsapp/numbers/%s/messages', $this->numberId), $data);
+        return $this->sendRequest('POST', $this->resolveMessagePath(), $data);
     }
 
     public function sendLocation($to, $longitude, $latitude, $name, $address)
@@ -95,7 +121,7 @@ class Number
             ]
         ];
 
-        return $this->sendRequest('POST', sprintf('whatsapp/numbers/%s/messages', $this->numberId), $data);
+        return $this->sendRequest('POST', $this->resolveMessagePath(), $data);
     }
 
     public function sendImage($to, $link, $caption = null)
@@ -109,7 +135,7 @@ class Number
             ]
         ];
 
-        return $this->sendRequest('POST', sprintf('whatsapp/numbers/%s/messages', $this->numberId), $data);
+        return $this->sendRequest('POST', $this->resolveMessagePath(), $data);
     }
 
     public function sendDocument($to, $link, $caption = null)
@@ -123,7 +149,7 @@ class Number
             ]
         ];
 
-        return $this->sendRequest('POST', sprintf('whatsapp/numbers/%s/messages', $this->numberId), $data);
+        return $this->sendRequest('POST', $this->resolveMessagePath(), $data);
     }
 
     public function sendVideo($to, $link, $caption = null)
@@ -137,7 +163,7 @@ class Number
             ]
         ];
 
-        return $this->sendRequest('POST', sprintf('whatsapp/numbers/%s/messages', $this->numberId), $data);
+        return $this->sendRequest('POST', $this->resolveMessagePath(), $data);
     }
 
     public function sendAudio($to, $link)
@@ -150,11 +176,11 @@ class Number
             ]
         ];
 
-        return $this->sendRequest('POST', sprintf('whatsapp/numbers/%s/messages', $this->numberId), $data);
+        return $this->sendRequest('POST', $this->resolveMessagePath(), $data);
     }
 
     public function getMedia($mediaId)
     {
-        return $this->sendRequest('GET', sprintf('whatsapp/numbers/%s/media/%s', $this->numberId, $mediaId));
+        return $this->sendRequest('GET', $this->resolveMediaPath($mediaId));
     }
 }

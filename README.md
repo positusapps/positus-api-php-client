@@ -39,6 +39,12 @@ $number = $client->number('your-number-id');
 
 Then send the message and wait for a response.
 
+If you want to test a Sandbox you can pass a second argument when calling the number method as `true`:
+
+````php
+$number = $client->number('sandbox-number-id', true);
+````
+
 If you want to send a message using data on your own, you can use:
 
 ````php

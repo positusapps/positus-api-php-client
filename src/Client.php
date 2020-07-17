@@ -19,11 +19,11 @@ class Client
         $this->client->setAuthToken($token);
     }
 
-    public function number($numberId)
+    public function number($numberId, $sandbox = false)
     {
         $this->numberId = $numberId;
 
-        return new Number($this);
+        return new Number($this, $sandbox);
     }
 
     public function getClient()
