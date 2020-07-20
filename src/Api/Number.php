@@ -30,7 +30,7 @@ class Number
         return new Response($response);
     }
 
-    public function resolveMessagePath()
+    private function resolveMessagePath()
     {
         $path = sprintf('whatsapp/numbers/%s/messages', $this->numberId);
 
@@ -41,7 +41,7 @@ class Number
         return $path;
     }
 
-    public function resolveMediaPath($mediaId)
+    private function resolveMediaPath($mediaId)
     {
         $path = sprintf('whatsapp/numbers/%s/media/%s', $this->numberId, $mediaId);
 
