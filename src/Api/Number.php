@@ -89,28 +89,6 @@ class Number
         return $this->sendRequest('POST', $this->resolveMessagePath(), $data);
     }
 
-    public function sendHsm($to, $namespace, $elementName, $languageCode, $localizableParams = [])
-    {
-        $data = [
-            'to' => $to,
-            'type' => 'hsm',
-            'hsm' => [
-                "namespace" => $namespace,
-                "element_name" => $elementName,
-                "language" => [
-                    "code" => $languageCode
-                ],
-                "localizable_params" => array_map(function ($param) {
-                    return [
-                        'default' => $param
-                    ];
-                }, $localizableParams)
-            ]
-        ];
-
-        return $this->sendRequest('POST', $this->resolveMessagePath(), $data);
-    }
-
     public function sendContacts($to, $contacts)
     {
         $data = [

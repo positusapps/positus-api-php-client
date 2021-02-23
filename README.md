@@ -67,21 +67,22 @@ If you prefer, we provide ready methods for each type of message.
 $response = $number->sendText('+5511999999999', 'Your message');
 ````
 
-### HSM
-
-````php
-$response = $number->sendHsm('+5511999999999', 'namespace', 'element-name', 'country-code', ['parameter-a', ...]);
-````
-
-Please check the documentation related to hsms in the [WhatsApp Business documentation](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates).
-
 ### Template
 
 ````php
-$response = $number->sendTemplate('+5511999999999', 'namespace', 'name', 'country-code', [...]);
+$response = $number->sendTemplate('+5511999999999', 'namespace', 'name', 'languageCode', [
+    "type" => "body",
+    "parameters" => [
+        [
+            "type" => "text",
+            "text" => "Param 1"
+        ],
+        ...
+    ]
+]);
 ````
 
-Please check the documentation related to templates in the [WhatsApp Business documentation](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates/media-message-templates).
+Please check the documentation related to templates in the [WhatsApp Business documentation](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates).
 
 ### Contacts
 
