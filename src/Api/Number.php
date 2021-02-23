@@ -79,6 +79,7 @@ class Number
                 "namespace" => $namespace,
                 "name" => $name,
                 "language" => [
+                    "policy" => "deterministic",
                     "code" => $languageCode
                 ],
                 "components" => $components
